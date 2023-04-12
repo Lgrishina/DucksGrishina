@@ -21,13 +21,15 @@ public class RubberDucksPage extends BasePage {
 
     private static final By buttonName = By.xpath("//a[@href='https://litecart.stqa.ru/en/rubber-ducks-c-1/?category_id=1&page=1&sort=name']");
 
+    public static final By collection = By.xpath("//li[@class='product column shadow hover-light']/a/div[@class='name']");
+
 
     public RubberDucksPage(WebDriver driver) {
         super(driver);
     }
 
     public void goToRubberDucks() {
-        driver.findElement(rubberDucks).click();
+//        driver.findElement(rubberDucks).click();
         $(rubberDucks).click();
     }
 
