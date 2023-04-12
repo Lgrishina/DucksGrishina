@@ -24,9 +24,11 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    protected void setupBefore() {
+    protected void setupBefore()
+    {
         open(baseUrl);
     }
+
 
 
     @AfterTest

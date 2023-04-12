@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
 
     @Test (priority = 0)
     public void unsuccessfulLoginTest() {
-        loginPage.attemptLogin("l.zubtsova@mail.ru", "14031Atc");
+        loginPage.attemptLogin("liud.gre@gmail.com", "14031Atc");
         String expectedMessage = "Wrong password or the account is disabled, or does not exist";
 
         Assert.assertEquals(expectedMessage,loginPage.getMessageError());

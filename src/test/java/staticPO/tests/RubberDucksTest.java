@@ -1,10 +1,14 @@
 package staticPO.tests;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import staticPO.pages.RubberDucksPage;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class RubberDucksTest extends BaseTest {
     RubberDucksPage rubberDucksPage;
@@ -25,18 +29,18 @@ public class RubberDucksTest extends BaseTest {
     @Test
     public void priceOfTheFirstDuckOnDatePage() {
         rubberDucksPage.goToDatePage();
-        String price = driver.findElement
-                (By.xpath("//div[@class='price-wrapper']//*[@class='campaign-price']")).getText();
+        SelenideElement price = $(By.xpath("//div[@class='price-wrapper']//*[@class='campaign-price']"));
         String expectedPrice = "$18";
-        Assert.assertEquals(price, expectedPrice);
+        price.shouldHave(Condition.exactText(expectedPrice));
+
     }
     @Test
     public void priceOfTheFirstDuckOnNamePage() {
+        rubberDucksPage.goToRubberDucks();
         rubberDucksPage.goToNamePage();
-        String price = driver.findElement
-                (By.xpath("//*[@href='https://litecart.stqa.ru/en/rubber-ducks-c-1/blue-duck-p-4']//*[@class='price']"))
-                .getText();
+        SelenideElement price = $(By.xpath("//a[@href='https://litecart.stqa.ru/en/rubber-ducks-c-1/blue-duck-p-4']//*[@class='price']"));
         String expectedPrice = "$20";
-        Assert.assertEquals(price, expectedPrice);
+        price.shouldHave(Condition.exactText(expectedPrice));
+//      Assert.assertEquals(price, expectedPrice);
     }
 }
